@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Civil Engineering</title>
+
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="header" style="margin-bottom: 0px;">
+        <center><font style="font-size: 50px;"><a href="#"></a><strong>KUBot</strong></font></center>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="nav navbar-nav">
+          <li><a href="#"><strong>Syllabus</strong></a></li>
+          <li><a href="#"><strong>Lecture Notes</strong></a></li>
+          <li><a href="#"><strong>Assignment</strong></a></li>
+          <li><a href="#"><strong>Question Banks</strong></a></li>
+        </div>
+
+
+      </nav>
+      
+        <div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by course code or name" title="Type in a name">
+<h1 id="header">List of Documents</h1>
+<table id="myTable">
+  <tr>
+    <th>Course Code:</th>
+    <th>Course Name:</th>
+    <th>Year: </th>
+    <th>Semester: </th>
+    <th>Department: </th>
+    <th>Download</th>
+  </tr>
+  <% files.forEach(function(file,i){ %>
+  <tr>
+    <td><%= file.courseCode %></td>
+    <td><%= file.courseName %></td>
+    <td><%= file.year %></td>
+    <td><%= file.semester %></td>
+    <td><%= file.department %></td>
+    <td><a href="/download/<%= file._id %>" ><%= file.myimage %></a></td>
+  </tr>
+  <% }) %>
+</table>
+
+
+        </div>
+    </div>
+
+
+    <script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    td1= tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+        
+      if (td1) {
+      if (td1.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+      }
+    }
+
+
+
+  }
+}
+
+/*var $rows = $("tr");
+
+$("#myInput").keyup(function() {
+    var value = $.trim(this.value);
+    var val = $.trim(this.value.toUpperCase());
+    if (val === "")
+        $rows.show();
+    else {
+        $rows.hide();
+        $rows.has("td:contains(" + value + ")").show();
+    }
+});*/
+</script>
+  </body>
+</html>

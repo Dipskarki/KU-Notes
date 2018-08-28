@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Gabriel Mangiurea">
+    <meta name="description" content="Gabriel Mangiurea - Web Developer - Bucharest, Romania">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Lab: Chatbot - Aida">
+    <meta property="og:description" content="Conversational bot written in JavaScript programming language.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://gabrielmangiurea.github.io/og-tc.png">
+    <meta property="og:image:url" content="https://gabrielmangiurea.github.io/og-tc.png">
+    <meta property="og:image:secure_url" content="https://gabrielmangiurea.github.io/og-tc.png">
+    <meta property="og:url" content="https://gabrielmangiurea.github.io/lab/chatbot/">
+    <meta property="fb:app_id" content="1779484198984012">
+
+    <!-- Twitter Cards -->
+    <!--<meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="Lab: Chatbot - Aida" />
+    <meta name="twitter:description" content="Conversational bot written in JavaScript programming language." />
+    <meta name="twitter:image" content="https://gabrielmangiurea.github.io/og-tc.png" />-->
+   
+    <link rel="icon" type="image/png" sizes="192x192"  href="../../favicon.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="../../favicon.png">
+    <link rel="shortcut icon" href="../../favicon.png"> 
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="../../ven/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" src="/stylesheets/style.css"> -->
+
+    <base target="_blank">
+
+
+    
+    <style type="text/css">
+    @import url("https://fonts.googleapis.com/css?family=Roboto:300");
+
+html,
+body {
+  background-color: #efefef;
+  font: 16px/1.2 'Roboto', sans-serif;
+}
+
+a:link {
+  color: #1E90FF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1E90FF;
+  text-decoration: underline;
+}
+
+a:active,
+a:visited {
+  color: #1E90FF;
+  text-decoration: none;
+}
+
+.container {
+  margin-top: 10px;
+}
+
+.hidden-commands {
+  display: none;
+}
+
+.bot-container [class^="col-"] {
+  margin: 2px 0;
+  padding: 0 1px;
+}
+
+.view {
+  margin: 10px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.conversation {
+  border-radius: 10px;
+  padding: 10px;
+  min-width: 25%;
+  max-width: 80%;
+  overflow-wrap: break-word;
+  color: white;
+}
+
+.conversation.bot {
+  background-color: #228b22;
+  float: left;
+  clear: both;
+}
+
+.conversation.user {
+  background-color: #4169e1;
+  float: right;
+  clear: both;
+}
+
+.conversation a {
+  color: yellow;
+}
+
+.name,
+.message,
+.timestamp {
+  display: block;
+  padding: 2.5px;
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+}
+
+.timestamp {
+  font-size: 0.7rem;
+  font-style: italic;
+}
+
+.footer {
+  font-size: 0.75rem;
+  padding: 20px 0;
+}
+    </style>
+
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <p>Ask any queries that you have about the website.</p>
+          <p><span title="Aida">She</span> currently responds to the following expressions <em>(both written and <span style="font-weight: bold; cursor: help" title="Available in Google Chrome v54+.&#013;It requires permission to access your microphone.&#013;Permissions can be revoked at any time through browser settings.">spoken</span><sup style="font-size: xx-small; color: red">new</sup>)</em>:
+          <ul>
+            <li><code>Hello / Hi</code></li>
+            <li><code>Who/What are you?</code></li>
+            <li><code>How are you? / What are you doing?</code></li>
+            <li><code>My name is <i>[your name here]</i></code></li>
+            <li><code>I want you to remember this for me: / Remember this: <i>[sentence here]</i></code></li>
+            <li><code>Where am I?</code></li>
+            <li><code>Search <i>(on Google)</i> for <i>[search term(s) here]</i></code></li>
+            <li><code>I want to <i>(listen to/watch)</i> <i>[search term(s) here]</i></code></li>
+            <li><code>Tell me something about [term here]</i></code></li>
+            <li><code>Start/stop listening/talking</i></code></li>
+
+            <div class="hidden-commands">
+              <li><code>I am <i>[your name here]</i></code></li>
+              <li><code><i>(You can)</i> call me <i>[your name here]</i></code></li>
+              <li><code>What do you remember?</code></li>
+              <li><code>I want you to forget everything</i></code></li>
+              <li><code>What day is [<i>today</i>/<i>this day</i>/<i>it</i>]?</code></li>
+              <li><code>What day [<i>was/will be</i>] on [<i>month day year</i>]?</code></li>
+              <li><code>What day [<i>was/will be in</i>] [<i>&lt;number&gt; days/weeks/months/years</i>] (ago)?<br>(tip: you can combine dates; i.e. 10 days and 7 weeks)</code></li>
+              <li><code>You are <i>(adverb)</i> <i>[nice/sweet/beautiful/awesome/great/super/epic]</i></code></li>
+            </div>
+          </ul>
+          <a href="javascript:void(0)" class="more" target="_self" style="font-size: small"></a>
+        </p>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 20px">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="bot-container">
+          <div class="view clearfix"></div>
+          <form class="form-horizontal">
+            <div class="col-sm-10">
+              <input class="form-control" type="text" autofocus />
+            </div>
+            <div class="col-sm-2">
+              <input class="btn btn-default btn-block" type="submit" value="Send" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center footer">
+      </div>
+    </div>
+  </div>
+    <script src="../../ven/js/jquery.min.js"></script>
+    <script src="/javascripts/responsivevoice.min.js"></script>
+    <script src="/javascripts/annyang.min.js"></script>
+    <script src="/javascripts/moment.min.js"></script>
+    <script src="/javascripts/bot.js"></script>
+    <script>
+      $(function () {
+        $('.more').html('<span class="glyphicon glyphicon-chevron-down" style="font-size: x-small"></span> Show more');
+
+        $('.more').on('click', function () {
+          $('.hidden-commands').slideToggle(400, function () {
+            $('.more').html(
+              ($(this).css('display') == 'none')
+              ? '<span class="glyphicon glyphicon-chevron-down" style="font-size: x-small"></span> Show more'
+              : '<span class="glyphicon glyphicon-chevron-up" style="font-size: x-small"></span> Show less'
+            );
+          });
+        });
+      });
+    </script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-85093851-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>

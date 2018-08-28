@@ -1,0 +1,99 @@
+
+.................................................download.js..............................................
+
+/*router.get('/:id', function(req, res, next){
+    var file = req.params.myimage,
+    path = __dirname + '/uploads/' +file;
+    res.download("uploads/report.docx");
+   
+  });*/
+
+
+/* var file = req.params.path
+    , path = __dirname + '/uploads/' + file;
+
+  res.download(path);*/
+/*Image.findOne({_id: req.params.id}, function(err,doc){
+	if (err) throw err;
+	console.log('download..........');
+	var id = req.params.id;
+	console.log('path..',path);
+  res.download("/"+path);
+
+
+})*/
+
+/*  var file = req.params.id;
+  var path = require('path');
+  var path = path.resolve(".") + '/uploads/' + file;
+
+
+   res.download = function(path,filename,callback){
+  	var done = callback;
+  	var name = filename;
+  	var headers = {
+    'Content-Disposition': contentDisposition(name || path)
+  };
+
+  // Resolve the full path for sendFile
+  var fullPath = path;
+
+  return this.sendFile(fullPath, { headers: headers }, done);
+  }
+*/
+
+
+  /*   var file = req.params.id
+    , path = __dirname + '/uploads/' + file;
+
+  res.download = function(path,filename,callback){
+  	var done = callback;
+  	var name = filename;
+  	var headers = {
+    'Content-Disposition': contentDisposition(name || path)
+  };
+
+  // Resolve the full path for sendFile
+  var fullPath = resolve(path);
+
+  return this.sendFile(fullPath, { headers: headers }, done);
+  }*/
+/*});*/
+
+...............................................download.js..........................................................
+
+
+
+................................................................filesave.js.........................................
+    var filename = newFile._id + images.originalname;
+                    console.log(filename);
+    
+
+                 /*   // filename = newProduct._id + productImage.originalname
+                    // this make filename unique for each product image
+                    var filename = newFile._id + images.originalname;
+                    console.log(filename);
+
+                    // save each image in mongodb
+                    var writeStream = gfs.createWriteStream({
+                        filename: filename,
+                        mode: 'w',
+                        content_type: images.mimetype
+                    });
+
+                    writeStream.on('close', function(file) {
+                        return;
+                    });
+
+                    writeStream.write(images.buffer);
+                    writeStream.end();*/
+
+                  
+  });
+
+
+  .............................................................filesave.js.................................................
+
+
+
+  

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Lecture Notes</title>
+</head>
+<body>
+<table class="table table-striped">
+    	<% files.forEach(function(file,i){ %>
+    <tr>
+	<th>Course Code:</th>
+	<td><%= file.courseCode %></td>
+	</tr>
+	<tr>
+	<th>Course Name:</th>
+	<td><%= file.courseName %></td>
+	</tr>
+	<tr>
+	<th>Year:</th>
+	<td><%= file.year %></td>
+	</tr>
+	<tr>
+	<th>Semester:</th>
+	<td><%= file.semester %></td>
+	</tr>
+	<tr>
+	<th>Department:</th>
+	<td><%= file.department %></td>
+	</tr>
+    <tr>
+
+	<th>Download:</th>
+	<td><a href="/download/<%= file._id %>" ><%= file.myimage %></a></td>
+	</tr>
+	</t></t>
+
+	<!-- <tr>
+	<th></th>
+	<td><a href="<% file.originalname %>"><%= file.__v %></a></td>
+	</tr>
+	<tr>
+	<th></th>
+	<td><a href= "/download/<%= file._id %>">Download</a></td>
+	</tr> -->
+	<% }) %>
+    </table>
+    
+</body>
+</html>

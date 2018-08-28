@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by course code or name" title="Type in a name">
+<h1 id="header">List of Documents</h1>
+<table id="myTable">
+  <tr>
+    <th>Course Code:</th>
+    <th>Course Name:</th>
+    <th>Year: </th>
+    <th>Semester: </th>
+    <th>Department: </th>
+    <th>Download</th>
+  </tr>
+  <% files.forEach(function(file,i){ %>
+  <tr>
+    <td><%= file.courseCode %></td>
+    <td><%= file.courseName %></td>
+    <td><%= file.year %></td>
+    <td><%= file.semester %></td>
+    <td><%= file.department %></td>
+    <td><a href="/download/<%= file._id %>" ><%= file.myimage %></a></td>
+  </tr>
+  <% }) %>
+</table>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    td1= tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+        
+      if (td1) {
+      if (td1.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+      }
+    }
+
+
+
+  }
+}
+
+/*var $rows = $("tr");
+
+$("#myInput").keyup(function() {
+    var value = $.trim(this.value);
+    var val = $.trim(this.value.toUpperCase());
+    if (val === "")
+        $rows.show();
+    else {
+        $rows.hide();
+        $rows.has("td:contains(" + value + ")").show();
+    }
+});*/
+</script>
+
+</body>
+</html>
+
+
+
+<!-- <html>
+<head>
+ <title>All</title>
+</head>
+<body>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Course code or Course Name.." title="Type in a name">
+
+<table id="myTable" class="table table-striped">
+    	<% files.forEach(function(file,i){ %>
+    <tr>
+	<th>Course Code:</th>
+	<td><%= file.courseCode %></td>
+	</tr>
+	<tr>
+	<th>Course Name:</th>
+	<td><%= file.courseName %></td>
+	</tr>
+	<tr>
+	<th>Year:</th>
+	<td><%= file.year %></td>
+	</tr>
+	<tr>
+	<th>Semester:</th>
+	<td><%= file.semester %></td>
+	</tr>
+	<tr>
+	<th>Department:</th>
+	<td><%= file.department %></td>
+	</tr>
+    <tr>
+
+	<th>Download:</th>
+	<td><a href="/download/<%= file._id %>" ><%= file.myimage %></a></td>
+	</tr>
+	</t></t>
+
+	<tr>
+	<th></th>
+	<td><a href="<% file.originalname %>"><%= file.__v %></a></td>
+	</tr>
+	<tr>
+	<th></th>
+	<td><a href= "/download/<%= file._id %>">Download</a></td>
+	</tr>
+	<% }) %>
+    </table>
+
+
+   <script>
+function myFunction() {
+  var input, filter, table, tr, td, j;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  td = table.getElementsByTagName("td");
+  for (j = 0; j < td.length; j++) {
+    tr = td[j].getElementsByTagName("tr")[0];
+    if (tr) {
+      if (tr.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        td[j].style.display = "";
+      } else {
+        td[j].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+    
+</body>
+</html> -->

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Civil Engineering</title>
+
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+</style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="header" style="margin-bottom: 0px;">
+        <center><font style="font-size: 50px;"><a href="#"></a><strong>KUBot</strong></font></center>
+      </div>
+
+      <nav class="navbar navbar-default">
+        <div class="nav navbar-nav">
+          <li><a href="compsyllabus"><strong>Syllabus</strong></a></li>
+          <li><a href="complecture"><strong>Lecture Notes</strong></a></li>
+          <li><a href="#"><strong>Assignment</strong></a></li>
+          <li><a href="#"><strong>Question Banks</strong></a></li>
+        </div>
+
+
+      </nav>
+
+<!--     <div class="container">
+      <h2>Results</h2>
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by course code or name" title="Type in a name">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#lecture">Lecture</a></li>
+        <li><a data-toggle="tab" href="#syllabus">Syllabus</a></li>
+        <li><a data-toggle="tab" href="#notes">Notes</a></li>
+        <li><a data-toggle="tab" href="#assignment">Assignments</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="lecture" class="tab-pane fade in active">
+          <h3>Lecture</h3>
+         <table id="myTable">
+          <tr>
+            <th>Course Code:</th>
+            <th>Course Name:</th>
+            <th>Year: </th>
+            <th>Semester: </th>
+            <th>Department: </th>
+            <th>Download</th>
+          </tr>
+          <% files.forEach(function(file,i){ %>
+          <tr>
+            <td><%= file.courseCode %></td>
+            <td><%= file.courseName %></td>
+            <td><%= file.year %></td>
+            <td><%= file.semester %></td>
+            <td><%= file.department %></td>
+            <td><a href="/download/<%= file._id %>" ><%= file.myimage %></a></td>
+          </tr>
+          <% }) %>
+        </table>
+
+        </div>
+        <div id="syllabus" class="tab-pane fade">
+          <h3>Syllabus</h3>
+         <table id="myTable">
+          <tr>
+            <th>Course Code:</th>
+            <th>Course Name:</th>
+            <th>Year: </th>
+            <th>Semester: </th>
+            <th>Department: </th>
+            <th>Download</th>
+          </tr>
+          <% files.forEach(function(file,i){ %>
+          <tr>
+            <td><%= file.courseCode %></td>
+            <td><%= file.courseName %></td>
+            <td><%= file.year %></td>
+            <td><%= file.semester %></td>
+            <td><%= file.department %></td>
+            <td><a href="/download/<%= file._id %>" ><%= file.myimage %></a></td>
+          </tr>
+          <% }) %>
+        </table>
+        </div>
+        <div id="notes" class="tab-pane fade">
+          <h3>Menu 2</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        </div>
+        <div id="assignment" class="tab-pane fade">
+          <h3>Menu 3</h3>
+          <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+        </div>
+      </div>
+    </div> -->
+
+      
+        <div>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by course code or name" title="Type in a name">
+<h1 id="header">List of Documents</h1>
+<table id="myTable">
+  <tr>
+    <th>Course Code:</th>
+    <th>Course Name:</th>
+    <th>Year: </th>
+    <th>Semester: </th>
+    <th>Department: </th>
+    <th>Download</th>
+  </tr>
+  <% files.forEach(function(file,i){ %>
+  <tr>
+    <td><%= file.courseCode %></td>
+    <td><%= file.courseName %></td>
+    <td><%= file.year %></td>
+    <td><%= file.semester %></td>
+    <td><%= file.department %></td>
+    <td><a href="/download/<%= file._id %>" ><%= file.myimage %></a></td>
+  </tr>
+  <% }) %>
+</table>
+
+
+        </div>
+    </div>
+
+
+    <script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    td1= tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+        
+      if (td1) {
+      if (td1.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+      }
+    }
+
+
+
+  }
+}
+
+/*var $rows = $("tr");
+
+$("#myInput").keyup(function() {
+    var value = $.trim(this.value);
+    var val = $.trim(this.value.toUpperCase());
+    if (val === "")
+        $rows.show();
+    else {
+        $rows.hide();
+        $rows.has("td:contains(" + value + ")").show();
+    }
+});*/
+</script>
+  </body>
+</html>
